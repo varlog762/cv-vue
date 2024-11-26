@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import HeaderComponent from '@/components/HeaderComponent.vue'
+
+defineOptions({
+  name: 'MainPage',
+})
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <HeaderComponent />
   </div>
 </template>

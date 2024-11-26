@@ -29,3 +29,5 @@ origin
 *.sw?
 
 *.tsbuildinfo
+
+profile-data-ru.json
