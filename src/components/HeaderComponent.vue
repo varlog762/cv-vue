@@ -19,17 +19,27 @@ defineOptions({
           </h1>
         </div>
         <div class="contacts">
-          <div class="contact_item">
-            <font-awesome-icon :icon="['fas', 'envelope']" class="icon" />
-            greg.pereverzev@gmail.com
-          </div>
+          <a href="mailto:greg.pereverzev@gmail.com">
+            <div class="contact_item">
+              <font-awesome-icon :icon="['fas', 'envelope']" class="icon" />
+              greg.pereverzev@gmail.com
+            </div>
+          </a>
+          <a href="tel:+375 29 562 59 28">
+            <div class="contact_item">
+              <font-awesome-icon :icon="['fas', 'phone']" class="icon" />
+              +375 29 562 59 28
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/gregory-pereverzev-33848759/" target="_blank">
+            <div class="contact_item">
+              <font-awesome-icon :icon="['fab', 'linkedin']" class="icon" />
+              linkedIn
+            </div>
+          </a>
           <div class="contact_item">
             <font-awesome-icon :icon="['fab', 'github']" class="icon" />
-            github.com/varlog762
-          </div>
-          <div class="contact_item">
-            <font-awesome-icon :icon="['fas', 'phone']" class="icon" />
-            +375 29 562 59 28
+            github
           </div>
         </div>
       </div>
@@ -38,6 +48,8 @@ defineOptions({
 </template>
 
 <style lang="scss" scoped>
+@import '../assets/styles/main.scss';
+
 .header {
   min-height: 400px;
   padding: 72px 64px 0 64px;
@@ -54,7 +66,7 @@ defineOptions({
   font-family: Prata, serif;
   font-size: 10px;
   line-height: 20px;
-  color: #222;
+  color: $dark;
 }
 
 .photo {
@@ -94,6 +106,6 @@ defineOptions({
 }
 
 .icon {
-  color: #ca6d18;
+  color: $orange;
 }
 </style>
