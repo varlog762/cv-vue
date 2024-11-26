@@ -13,4 +13,7 @@ export interface ProfileInterface {
   }
   workExperience: JobInterface[]
   education: UniversityInterface[]
+  aboutMe: string
+  skills: string[]
+  languages: string[]
 }
