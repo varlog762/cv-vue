@@ -7,9 +7,7 @@ defineOptions({
 </script>
 
 <template>
-  <div class="container">
-    <HeaderComponent />
-  </div>
+  <HeaderComponent />
 </template>
 
 <style lang="scss" scoped></style>

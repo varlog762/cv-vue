@@ -6,25 +6,30 @@ defineOptions({
 
 <template>
   <header class="header">
-    <div class="wrapper">
-      <div class="header_container">
-        <div class="photo"></div>
+    <div class="container">
+      <div class="header-container">
+        <div class="photo">
+          <img src="/images/img.png" alt="My photo" class="photo-image" />
+        </div>
         <div class="info">
           <h2 class="position">Frontend разработчик (Junior)</h2>
-          <h1 class="name">Переверзев<br />Григорий<br />Владимирович</h1>
+          <h1 class="name">
+            Григорий<br />
+            Переверзев
+          </h1>
         </div>
         <div class="contacts">
-          <div class="email contact_item">
-            <font-awesome-icon :icon="['fas', 'envelope']" />
-            <div class="mail_address">greg.pereverzev@gmail.com</div>
+          <div class="contact_item">
+            <font-awesome-icon :icon="['fas', 'envelope']" class="icon" />
+            greg.pereverzev@gmail.com
           </div>
-          <div class="github contact_item">
-            <font-awesome-icon :icon="['fab', 'github']" />
-            <div class="github_address">github.com/varlog762</div>
+          <div class="contact_item">
+            <font-awesome-icon :icon="['fab', 'github']" class="icon" />
+            github.com/varlog762
           </div>
-          <div class="phone contact_item">
-            <div class="phone_icon contact_icon"></div>
-            <div class="phone_number">+375 29 562 59 28</div>
+          <div class="contact_item">
+            <font-awesome-icon :icon="['fas', 'phone']" class="icon" />
+            +375 29 562 59 28
           </div>
         </div>
       </div>
@@ -34,69 +39,61 @@ defineOptions({
 
 <style lang="scss" scoped>
 .header {
-  min-height: 200px;
-  padding: 30px;
-  background: url(../images/background.png) center no-repeat;
+  min-height: 400px;
+  padding: 72px 64px 0 64px;
+  background: url(../images/background.png) center top no-repeat;
+  background-size: 100% 100%;
+}
 
-  .header_container {
+.header-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: top;
+  flex-wrap: wrap;
+  font-family: Prata, serif;
+  font-size: 10px;
+  line-height: 20px;
+  color: #222;
+}
+
+.photo {
+  margin-bottom: 20px;
+  height: 208px;
+  width: 208px;
+  border-radius: 100%;
+  overflow: hidden;
+
+  &-image {
+    display: block;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-family: Prata, serif;
-    font-size: 10px;
-    line-height: 20px;
-    color: #222;
-
-    .photo {
-      height: 104px;
-      width: 104px;
-      border-radius: 100%;
-      background: url(../images/img.png) center no-repeat;
-    }
-
-    .info {
-      margin-right: 20px;
-    }
-
-    .contacts {
-      .contact_item {
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        gap: 4px;
-
-        .contact_icon {
-          padding: 0 8px;
-          height: 14px;
-          width: 14px;
-        }
-      }
-
-      .email {
-        .mail_icon {
-          background: url(../icons/Mail_black.png) center no-repeat;
-        }
-      }
-
-      .in {
-        .in_icon {
-          background: url(../icons/LinkedIN_black.png) center no-repeat;
-        }
-      }
-
-      .github {
-        .github_icon {
-          background: url(../icons/github.png) center no-repeat;
-        }
-      }
-
-      .phone {
-        .phone_icon {
-          background: url(../icons/Combined_Shape.png) center no-repeat;
-        }
-      }
-    }
+    width: 100%;
+    height: 120%;
   }
+}
+
+.position {
+  font-size: 28px;
+  line-height: 28px;
+}
+
+.name {
+  font-family: Prata, serif;
+  font-size: 50px;
+  line-height: 155%;
+}
+
+.contact_item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Prata', serif;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.icon {
+  color: #ca6d18;
 }
 </style>
