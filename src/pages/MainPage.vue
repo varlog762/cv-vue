@@ -3,8 +3,8 @@ import { ref, onMounted } from 'vue'
 
 import type { ProfileInterface } from '@/interfaces'
 import HeaderComponent from '@/components/HeaderComponent.vue'
-import WorkExperienceComponent from '@/components/WorkExperienceComponent.vue'
 import EducationComponent from '@/components/EducationComponent.vue'
+import JobComponent from '@/components/JobComponent.vue'
 
 defineOptions({
   name: 'MainPage',
@@ -29,36 +29,28 @@ onMounted(() => {
     <HeaderComponent :personal-info="profileData.personalInfo" :position="profileData.position" />
     <main class="main">
       <div class="flex">
-        <WorkExperienceComponent />
+        <section class="experience">
+          <h2 class="experience-header">Опыт работы</h2>
+          <JobComponent v-for="job in profileData.workExperience" :key="job.period" :job="job" />
+        </section>
         <div>
           <EducationComponent />
           <section class="about-me">
             <h2 class="about-me-header">Обо мне</h2>
-            <div class="about-me-description">
-              С детства меня увлекают компьютеры и все, что с ними связано. Это увлечение стало не
-              просто хобби, но и стимулом к развитию в профессиональной сфере.<br />
-              Я женат и воспитываю маленького сына.<br />
-              В свободное время я люблю путешествовать, открывая для себя новые места и культуры.
-              Также увлекаюсь велоспортом и пешими прогулками.<br />
-              Моя цель на ближайшие годы – стать экспертом в области веб-разработки. Я уверен, что
-              мой пытливый ум, целеустремленность и открытость к новым знаниям позволят мне добиться
-              успеха.<br />
-              Уверен, что мои навыки и личные качества станут ценным активом для вашей команды.
-            </div>
+            <div class="about-me-description">{{ profileData.aboutMe }}</div>
           </section>
         </div>
       </div>
       <section class="skills">
         <div class="skills-container">
-          <h2 class="skills-title">Навыки</h2>
           <div class="hard-skills-container">
-            <div class="block">HTML/CSS<br />JavaScript/TypeScript<br />Angular<br />NgRx</div>
-            <div class="block">Node.js<br />Python (basic)<br />Git/Github<br />Figma</div>
-            <div class="block">
-              <h3 class="lang_header">Владение языками</h3>
-              <div class="lang_descr">
-                Русский - родной<br />Белорусский - родной<br />Английский - B1
-              </div>
+            <h2 class="skills-title">Навыки</h2>
+            <div class="skill" v-for="skill in profileData.skills" :key="skill">{{ skill }}</div>
+          </div>
+          <div class="languages-container">
+            <h3 class="languages-title">Владение языками</h3>
+            <div class="language" v-for="language in profileData.languages" :key="language">
+              {{ language }}
             </div>
           </div>
         </div>
@@ -81,11 +73,28 @@ onMounted(() => {
   gap: 80px;
 }
 
+.experience {
+  max-width: 50%;
+}
+
 .about-me-description {
   padding-bottom: 16px;
   font-family: Poppins, sans-serif;
   font-size: 14px;
   line-height: 18px;
   color: $dark;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px;
+}
+
+.hard-skills-container {
+  max-width: 45%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 </style>
