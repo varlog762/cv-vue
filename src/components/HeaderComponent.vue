@@ -1,7 +1,14 @@
 <script setup lang="ts">
+import type { PersonalInfoInterface } from '@/interfaces'
+
 defineOptions({
   name: 'HeaderComponent',
 })
+
+const { personalInfo, position } = defineProps<{
+  personalInfo: PersonalInfoInterface
+  position: string
+}>()
 </script>
 
 <template>
@@ -12,35 +19,34 @@ defineOptions({
           <img src="/images/img.png" alt="My photo" class="photo-image" />
         </div>
         <div class="info">
-          <h2 class="position">Frontend разработчик (Junior)</h2>
-          <h1 class="name">
-            Григорий<br />
-            Переверзев
-          </h1>
+          <h2 class="position">{{ position }}</h2>
+          <h1 class="name">{{ personalInfo.firstName }}<br />{{ personalInfo.lastName }}</h1>
         </div>
         <div class="contacts">
-          <a href="mailto:greg.pereverzev@gmail.com">
+          <a :href="`mailto:${personalInfo.email}`">
             <div class="contact_item">
               <font-awesome-icon :icon="['fas', 'envelope']" class="icon" />
-              greg.pereverzev@gmail.com
+              {{ personalInfo.email }}
             </div>
           </a>
-          <a href="tel:+375 29 562 59 28">
+          <a :href="`tel:${personalInfo.phone}`">
             <div class="contact_item">
               <font-awesome-icon :icon="['fas', 'phone']" class="icon" />
-              +375 29 562 59 28
+              {{ personalInfo.phone }}
             </div>
           </a>
-          <a href="https://www.linkedin.com/in/gregory-pereverzev-33848759/" target="_blank">
+          <a :href="`${personalInfo.linkedInLink}`" target="_blank">
             <div class="contact_item">
               <font-awesome-icon :icon="['fab', 'linkedin']" class="icon" />
               linkedIn
             </div>
           </a>
-          <div class="contact_item">
-            <font-awesome-icon :icon="['fab', 'github']" class="icon" />
-            github
-          </div>
+          <a :href="`${personalInfo.githubLink}`" target="_blank">
+            <div class="contact_item">
+              <font-awesome-icon :icon="['fab', 'github']" class="icon" />
+              github
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -52,9 +58,10 @@ defineOptions({
 
 .header {
   min-height: 400px;
-  padding: 72px 64px 0 64px;
+  padding-top: 72px;
   background: url(../images/background.png) center top no-repeat;
   background-size: 100% 100%;
+  margin-bottom: 50px;
 }
 
 .header-container {

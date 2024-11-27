@@ -2,7 +2,7 @@ import type { JobInterface, UniversityInterface, PersonalInfoInterface } from '@
 
 export interface ProfileInterface {
   position: string
-  personal_info: PersonalInfoInterface
+  personalInfo: PersonalInfoInterface
   workExperience: JobInterface[]
   education: UniversityInterface[]
   aboutMe: string
