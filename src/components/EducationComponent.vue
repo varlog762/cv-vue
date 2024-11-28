@@ -10,7 +10,7 @@ const { education } = defineProps<{ education: UniversityInterface }>()
 
 <template>
   <h3 class="item-title">{{ education.specialization }}</h3>
-  <div class="item-subtitle">{{ education.university }} {{ education.period }}</div>
+  <div class="item-subtitle">{{ education.university }}, {{ education.period }}</div>
 </template>
 
 <style lang="scss" scoped>

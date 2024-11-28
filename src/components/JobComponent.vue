@@ -10,7 +10,7 @@ const { job } = defineProps<{ job: JobInterface }>()
 
 <template>
   <h3 class="item-title">{{ job.title }}</h3>
-  <div class="item-subtitle">{{ job.company }} {{ job.period }}</div>
+  <div class="item-subtitle">{{ job.company }}, {{ job.period }}</div>
   <div class="text">{{ job.responsibilities }}</div>
 </template>
 
