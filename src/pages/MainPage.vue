@@ -28,6 +28,30 @@ onMounted(() => {
   <div class="container" v-if="profileData">
     <HeaderComponent :personal-info="profileData.personalInfo" :position="profileData.position" />
     <main class="main">
+      <section class="experience section">
+        <h2 class="section-title">Опыт работы</h2>
+        <JobComponent v-for="job in profileData.workExperience" :key="job.period" :job="job" />
+      </section>
+      <section class="education section">
+        <h2 class="section-title">Образование</h2>
+        <EducationComponent
+          v-for="education in profileData.education"
+          :key="education.period"
+          :education="education"
+        />
+      </section>
+      <section class="about-me section">
+        <h2 class="section-title">Обо мне</h2>
+        <div class="text">{{ profileData.aboutMe }}</div>
+      </section>
+      <section class="projects section">
+        <h2 class="section-title">Проекты</h2>
+        <div class="text project">English For Kids <span>github</span></div>
+        <div class="text project">Medium Clone <span>github</span></div>
+        <div class="text project">Проект 3 <span>github</span></div>
+        <div class="text project">Проект 4 <span>github</span></div>
+        <div class="text project">Interview List <span>github</span></div>
+      </section>
       <section class="skills section">
         <div class="skills-grid">
           <div class="hard-skills">
@@ -38,31 +62,13 @@ onMounted(() => {
               </div>
             </div>
           </div>
-          <!-- <div class="languages-container">
-            <h2 class="section-title">Владение языками</h2>
-            <div class="language text" v-for="language in profileData.languages" :key="language">
-              {{ language }}
-            </div>
-          </div> -->
         </div>
       </section>
-      <div class="flex">
-        <section class="experience section">
-          <h2 class="section-title">Опыт работы</h2>
-          <JobComponent v-for="job in profileData.workExperience" :key="job.period" :job="job" />
-        </section>
-        <section class="education section">
-          <h2 class="section-title">Образование и дополнительное образование</h2>
-          <EducationComponent
-            v-for="education in profileData.education"
-            :key="education.period"
-            :education="education"
-          />
-        </section>
-      </div>
-      <section class="about-me section">
-        <h2 class="section-title">Обо мне</h2>
-        <div class="text">{{ profileData.aboutMe }}</div>
+      <section class="languages">
+        <h2 class="item-title languages-title">Владение языками</h2>
+        <div class="language text" v-for="language in profileData.languages" :key="language">
+          {{ language }}
+        </div>
       </section>
     </main>
   </div>
@@ -73,6 +79,14 @@ onMounted(() => {
 
 .main {
   padding: 0 32px;
+  display: grid;
+  grid-template: repeat(2, 1fr) 0.5fr 0.5fr / repeat(4, 1fr);
+  column-gap: 80px;
+  grid-template-areas:
+    'experience experience education education'
+    'experience experience education education'
+    'projects projects about-me about-me'
+    'skills skills skills languages';
 }
 
 .flex {
@@ -83,19 +97,38 @@ onMounted(() => {
 }
 
 .experience {
-  max-width: 50%;
+  grid-area: experience;
 }
 
-// .skills-grid {
-//   display: grid;
-//   grid-template-columns: 3fr 1fr;
-// }
+.education {
+  grid-area: education;
+}
+
+.about-me {
+  grid-area: about-me;
+}
+
+.projects {
+  grid-area: projects;
+}
+
+.project {
+  margin-bottom: 8px;
+
+  span {
+    color: $grey;
+  }
+}
 
 .skills-container {
   display: grid;
   grid-column-gap: 24px;
   grid-row-gap: 8px;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.skills {
+  grid-area: skills;
 }
 
 .skill {
@@ -107,6 +140,14 @@ onMounted(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+.languages {
+  grid-area: languages;
+
+  &-title {
+    margin-bottom: 16px;
+  }
 }
 
 .language {

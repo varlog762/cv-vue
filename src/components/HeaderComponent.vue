@@ -61,7 +61,7 @@ const { personalInfo, position } = defineProps<{
   padding-top: 72px;
   background: url(../images/background.png) center top no-repeat;
   background-size: 100% 100%;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .header-container {

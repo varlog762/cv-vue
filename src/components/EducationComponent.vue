@@ -9,8 +9,8 @@ const { education } = defineProps<{ education: UniversityInterface }>()
 </script>
 
 <template>
-  <h3 class="item-title">{{ education.specialization }}</h3>
-  <div class="item-subtitle">{{ education.university }}, {{ education.period }}</div>
+  <h3 class="item-title">{{ education.university }}, {{ education.period }}</h3>
+  <div class="item-subtitle">{{ education.specialization }}</div>
 </template>
 
 <style lang="scss" scoped>
