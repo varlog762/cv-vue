@@ -1,14 +1,24 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
 import type { PersonalInfoInterface } from '@/interfaces'
+import { LocalesEnum } from '@/enums'
 
 defineOptions({
   name: 'HeaderComponent',
 })
 
-const { personalInfo, position } = defineProps<{
-  personalInfo: PersonalInfoInterface
+const { position, personalInfo } = defineProps<{
   position: string
+  personalInfo: PersonalInfoInterface
 }>()
+
+const { locale, t } = useI18n()
+
+const changeLocale = () => {
+  locale.value = locale.value === LocalesEnum.RU ? LocalesEnum.EN : LocalesEnum.RU
+  localStorage.setItem('locale', locale.value)
+}
 </script>
 
 <template>
@@ -49,6 +59,7 @@ const { personalInfo, position } = defineProps<{
           </a>
         </div>
       </div>
+      <div class="switch-language" @click="changeLocale">{{ t('switchLanguage') }}</div>
     </div>
   </header>
 </template>
@@ -94,6 +105,7 @@ const { personalInfo, position } = defineProps<{
 .position {
   font-size: 28px;
   line-height: 28px;
+  margin-bottom: 20px;
 }
 
 .name {
@@ -114,5 +126,16 @@ const { personalInfo, position } = defineProps<{
 
 .icon {
   color: $orange;
+}
+
+.switch-language {
+  position: absolute;
+  top: -50px;
+  right: 30px;
+  font-size: 18px;
+  line-height: 20px;
+  color: $orange;
+  text-decoration: underline;
+  cursor: pointer;
 }
 </style>

@@ -1,71 +1,61 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-import type { ProfileInterface } from '@/interfaces'
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import JobComponent from '@/components/JobComponent.vue'
 import EducationComponent from '@/components/EducationComponent.vue'
+import { useProfileData } from '@/composables/useProfileData'
 
 defineOptions({
   name: 'MainPage',
 })
 
-const profileData = ref<ProfileInterface | null>(null)
-
-onMounted(() => {
-  fetch('/json/profile-data-ru.json')
-    .then((response) => response.json())
-    .then((data) => {
-      profileData.value = data
-    })
-    .catch((error) => {
-      console.error('Error fetching profile data:', error)
-    })
-})
+const { t } = useI18n()
+const profileData = useProfileData()
 </script>
 
 <template>
-  <div class="container" v-if="profileData">
-    <HeaderComponent :personal-info="profileData.personalInfo" :position="profileData.position" />
+  <div class="container">
+    <HeaderComponent :position="profileData.position" :personal-info="profileData.personalInfo" />
     <main class="main">
       <section class="experience section">
-        <h2 class="section-title">Опыт работы</h2>
+        <h2 class="section-title">{{ t('titles.workExperience') }}</h2>
         <JobComponent v-for="job in profileData.workExperience" :key="job.period" :job="job" />
       </section>
-      <section class="education section">
-        <h2 class="section-title">Образование</h2>
-        <EducationComponent
-          v-for="education in profileData.education"
-          :key="education.period"
-          :education="education"
-        />
-      </section>
-      <section class="about-me section">
-        <h2 class="section-title">Обо мне</h2>
-        <div class="text">{{ profileData.aboutMe }}</div>
-      </section>
+      <div class="education-and-about-me">
+        <section class="education section">
+          <h2 class="section-title">{{ t('titles.education') }}</h2>
+          <EducationComponent
+            v-for="education in profileData.education"
+            :key="education.period"
+            :education="education"
+          />
+        </section>
+        <section class="about-me section">
+          <h2 class="section-title">{{ t('titles.aboutMe') }}</h2>
+          <div class="text">{{ profileData.aboutMe }}</div>
+        </section>
+      </div>
       <section class="projects section">
-        <h2 class="section-title">Проекты</h2>
-        <div class="text project">English For Kids <span>github</span></div>
-        <div class="text project">Medium Clone <span>github</span></div>
-        <div class="text project">Проект 3 <span>github</span></div>
-        <div class="text project">Проект 4 <span>github</span></div>
-        <div class="text project">Interview List <span>github</span></div>
+        <h2 class="section-title">{{ t('titles.projects') }}</h2>
+        <div class="projects-grid">
+          <div class="text project">English For Kids <span>github</span></div>
+          <div class="text project">Medium Clone <span>github</span></div>
+          <div class="text project">Проект 3 <span>github</span></div>
+          <div class="text project">Проект 4 <span>github</span></div>
+          <div class="text project">Interview List <span>github</span></div>
+        </div>
       </section>
       <section class="skills section">
+        <h2 class="section-title">{{ t('titles.skills') }}</h2>
         <div class="skills-grid">
-          <div class="hard-skills">
-            <h2 class="section-title">Навыки</h2>
-            <div class="skills-container">
-              <div class="skill text" v-for="skill in profileData.skills" :key="skill">
-                {{ skill }}
-              </div>
-            </div>
+          <div class="skill text" v-for="skill in profileData.skills" :key="skill">
+            {{ skill }}
           </div>
         </div>
       </section>
       <section class="languages">
-        <h2 class="item-title languages-title">Владение языками</h2>
+        <h2 class="item-title languages-title">{{ t('titles.languages') }}</h2>
         <div class="language text" v-for="language in profileData.languages" :key="language">
           {{ language }}
         </div>
@@ -83,9 +73,9 @@ onMounted(() => {
   grid-template: repeat(2, 1fr) 0.5fr 0.5fr / repeat(4, 1fr);
   column-gap: 80px;
   grid-template-areas:
-    'experience experience education education'
-    'experience experience education education'
-    'projects projects about-me about-me'
+    'experience experience education-and-about-me education-and-about-me'
+    'experience experience education-and-about-me education-and-about-me'
+    'projects projects education-and-about-me education-and-about-me'
     'skills skills skills languages';
 }
 
@@ -100,16 +90,18 @@ onMounted(() => {
   grid-area: experience;
 }
 
-.education {
-  grid-area: education;
-}
-
-.about-me {
-  grid-area: about-me;
+.education-and-about-me {
+  grid-area: education-and-about-me;
 }
 
 .projects {
   grid-area: projects;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+  grid-auto-flow: column;
 }
 
 .project {
@@ -120,26 +112,20 @@ onMounted(() => {
   }
 }
 
-.skills-container {
-  display: grid;
-  grid-column-gap: 24px;
-  grid-row-gap: 8px;
-  grid-template-columns: repeat(4, 1fr);
-}
-
 .skills {
   grid-area: skills;
 }
 
-.skill {
-  margin-bottom: 0;
+.skills-grid {
+  display: grid;
+  grid-column-gap: 24px;
+  grid-row-gap: 8px;
+  grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+  grid-auto-flow: column;
 }
 
-.hard-skills-container {
-  max-width: 45%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.skill {
+  margin-bottom: 0;
 }
 
 .languages {

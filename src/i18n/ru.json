@@ -1,0 +1,11 @@
+{
+  "titles": {
+    "workExperience": "Опыт работы",
+    "education": "Образование",
+    "aboutMe": "Обо мне",
+    "projects": "Проекты",
+    "skills": "Навыки",
+    "languages": "Языки"
+  },
+  "switchLanguage": "english"
+}
