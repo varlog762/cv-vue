@@ -33,30 +33,30 @@ const changeLocale = () => {
           <h1 class="name">{{ personalInfo.firstName }}<br />{{ personalInfo.lastName }}</h1>
         </div>
         <div class="contacts">
-          <a :href="`mailto:${personalInfo.email}`">
-            <div class="contact_item">
-              <font-awesome-icon :icon="['fas', 'envelope']" class="icon" />
-              {{ personalInfo.email }}
-            </div>
-          </a>
-          <a :href="`tel:${personalInfo.phone}`">
-            <div class="contact_item">
+          <div class="contact_item">
+            <a :href="`mailto:${personalInfo.email}`"
+              ><font-awesome-icon :icon="['fas', 'envelope']" class="icon" />
+              {{ personalInfo.email }}</a
+            >
+          </div>
+          <div class="contact_item">
+            <a :href="`tel:${personalInfo.phone}`">
               <font-awesome-icon :icon="['fas', 'phone']" class="icon" />
               {{ personalInfo.phone }}
-            </div>
-          </a>
-          <a :href="`${personalInfo.linkedInLink}`" target="_blank">
-            <div class="contact_item">
+            </a>
+          </div>
+          <div class="contact_item">
+            <a :href="`${personalInfo.linkedInLink}`" target="_blank">
               <font-awesome-icon :icon="['fab', 'linkedin']" class="icon" />
               linkedIn
-            </div>
-          </a>
-          <a :href="`${personalInfo.githubLink}`" target="_blank">
-            <div class="contact_item">
+            </a>
+          </div>
+          <div class="contact_item">
+            <a :href="`${personalInfo.githubLink}`" target="_blank">
               <font-awesome-icon :icon="['fab', 'github']" class="icon" />
               github
-            </div>
-          </a>
+            </a>
+          </div>
         </div>
       </div>
       <div class="switch-language" @click="changeLocale">{{ t('switchLanguage') }}</div>
@@ -72,7 +72,8 @@ const changeLocale = () => {
   padding-top: 72px;
   background: url(../images/background.png) center top no-repeat;
   background-size: 100% 100%;
-  margin-bottom: 20px;
+  padding: auto;
+  background-color: #fbfbfb;
 }
 
 .header-container {
@@ -122,6 +123,10 @@ const changeLocale = () => {
   font-family: 'Prata', serif;
   font-size: 18px;
   line-height: 22px;
+
+  a {
+    font-family: Prata, serif;
+  }
 }
 
 .icon {

@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import JobComponent from '@/components/JobComponent.vue'
 import EducationComponent from '@/components/EducationComponent.vue'
+import SkillsComponent from '@/components/SkillsComponent.vue'
 import { useProfileData } from '@/composables/useProfileData'
 
 defineOptions({
@@ -47,18 +48,7 @@ const profileData = useProfileData()
         </div>
       </section>
       <section class="skills section">
-        <h2 class="section-title">{{ t('titles.skills') }}</h2>
-        <div class="skills-grid">
-          <div class="skill text" v-for="skill in profileData.skills" :key="skill">
-            {{ skill }}
-          </div>
-        </div>
-      </section>
-      <section class="languages">
-        <h2 class="item-title languages-title">{{ t('titles.languages') }}</h2>
-        <div class="language text" v-for="language in profileData.languages" :key="language">
-          {{ language }}
-        </div>
+        <SkillsComponent :skills="profileData.skills" />
       </section>
     </main>
   </div>
@@ -76,7 +66,9 @@ const profileData = useProfileData()
     'experience experience education-and-about-me education-and-about-me'
     'experience experience education-and-about-me education-and-about-me'
     'projects projects education-and-about-me education-and-about-me'
-    'skills skills skills languages';
+    'skills skills skills skills';
+  background-color: #fbfbfb;
+  padding-top: 20px;
 }
 
 .flex {
@@ -114,29 +106,5 @@ const profileData = useProfileData()
 
 .skills {
   grid-area: skills;
-}
-
-.skills-grid {
-  display: grid;
-  grid-column-gap: 24px;
-  grid-row-gap: 8px;
-  grid-template: repeat(3, 1fr) / repeat(4, 1fr);
-  grid-auto-flow: column;
-}
-
-.skill {
-  margin-bottom: 0;
-}
-
-.languages {
-  grid-area: languages;
-
-  &-title {
-    margin-bottom: 16px;
-  }
-}
-
-.language {
-  margin-bottom: 8px;
 }
 </style>
