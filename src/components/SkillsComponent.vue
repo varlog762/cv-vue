@@ -9,7 +9,7 @@ defineOptions({
 
 const { skills } = defineProps<{ skills: string[] }>()
 
-const isSkillLanguage = (skill: string): boolean => {
+const isLanguageSkill = (skill: string): boolean => {
   const languages = ['English', 'Russian', 'Belarusian', 'Английский', 'Русский', 'Белорусский']
   return languages.some((language) => skill.startsWith(language))
 }
@@ -22,7 +22,7 @@ const isSkillLanguage = (skill: string): boolean => {
       class="skill text"
       v-for="skill in skills"
       :key="skill"
-      :class="{ 'skill-language': isSkillLanguage(skill) }"
+      :class="{ 'skill-language': isLanguageSkill(skill) }"
     >
       {{ skill }}
     </div>
@@ -46,6 +46,5 @@ const isSkillLanguage = (skill: string): boolean => {
 
 .skill-language {
   color: $orange;
-  font-weight: bold;
 }
 </style>

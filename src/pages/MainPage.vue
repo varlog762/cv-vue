@@ -40,11 +40,10 @@ const profileData = useProfileData()
       <section class="projects section">
         <h2 class="section-title">{{ t('titles.projects') }}</h2>
         <div class="projects-grid">
-          <div class="text project">English For Kids <span>github</span></div>
-          <div class="text project">Medium Clone <span>github</span></div>
-          <div class="text project">Проект 3 <span>github</span></div>
-          <div class="text project">Проект 4 <span>github</span></div>
-          <div class="text project">Interview List <span>github</span></div>
+          <div class="text project" v-for="project in profileData.projects" :key="project.title">
+            <a :href="project.link" target="_blank" class="project-link">{{ project.title }}</a>
+            <a :href="project.githubLink" target="_blank" class="project-github-link">github</a>
+          </div>
         </div>
       </section>
       <section class="skills section">
@@ -99,7 +98,13 @@ const profileData = useProfileData()
 .project {
   margin-bottom: 8px;
 
-  span {
+  &-link {
+    font-weight: bold;
+    font-family: 'Prata', serif;
+  }
+
+  &-github-link {
+    margin-left: 10px;
     color: $grey;
   }
 }
