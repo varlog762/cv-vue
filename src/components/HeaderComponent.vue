@@ -73,7 +73,7 @@ const changeLocale = () => {
   background: url(../images/background.png) center top no-repeat;
   background-size: 100% 100%;
   padding: auto;
-  background-color: #fbfbfb;
+  background-color: $light-grey;
 }
 
 .header-container {
@@ -82,7 +82,7 @@ const changeLocale = () => {
   justify-content: space-around;
   align-items: top;
   flex-wrap: wrap;
-  font-family: Prata, serif;
+  font-family: $prata;
   font-size: 10px;
   line-height: 20px;
   color: $dark;
@@ -110,7 +110,7 @@ const changeLocale = () => {
 }
 
 .name {
-  font-family: Prata, serif;
+  font-family: $prata;
   font-size: 50px;
   line-height: 155%;
 }
@@ -120,12 +120,12 @@ const changeLocale = () => {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Prata', serif;
+  font-family: $prata;
   font-size: 18px;
   line-height: 22px;
 
   a {
-    font-family: Prata, serif;
+    font-family: $prata;
   }
 }
 

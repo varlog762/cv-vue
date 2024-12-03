@@ -66,7 +66,7 @@ const profileData = useProfileData()
     'experience experience education-and-about-me education-and-about-me'
     'projects projects education-and-about-me education-and-about-me'
     'skills skills skills skills';
-  background-color: #fbfbfb;
+  background-color: $light-grey;
   padding-top: 20px;
 }
 
@@ -100,7 +100,7 @@ const profileData = useProfileData()
 
   &-link {
     font-weight: bold;
-    font-family: 'Prata', serif;
+    font-family: $prata;
   }
 
   &-github-link {
