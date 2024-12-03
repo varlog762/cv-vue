@@ -1,4 +1,9 @@
-import type { JobInterface, UniversityInterface, PersonalInfoInterface } from '@/interfaces'
+import type {
+  JobInterface,
+  UniversityInterface,
+  PersonalInfoInterface,
+  ProjectInterface,
+} from '@/interfaces'
 
 export interface ProfileInterface {
   position: string
@@ -6,6 +11,7 @@ export interface ProfileInterface {
   workExperience: JobInterface[]
   education: UniversityInterface[]
   aboutMe: string
+  projects: ProjectInterface[]
   skills: string[]
   languages: string[]
 }
