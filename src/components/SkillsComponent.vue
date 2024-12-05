@@ -30,7 +30,7 @@ const isLanguageSkill = (skill: string): boolean => {
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/styles/main.scss';
+@use '@/assets/styles/variables' as *;
 
 .skills-grid {
   display: grid;

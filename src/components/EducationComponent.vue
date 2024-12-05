@@ -14,5 +14,5 @@ const { education } = defineProps<{ education: UniversityInterface }>()
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/main.scss';
+@use '@/assets/styles/variables' as *;
 </style>

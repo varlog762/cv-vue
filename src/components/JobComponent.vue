@@ -15,5 +15,5 @@ const { job } = defineProps<{ job: JobInterface }>()
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/main.scss';
+@use '@/assets/styles/variables' as *;
 </style>

@@ -54,7 +54,7 @@ const profileData = useProfileData()
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/main.scss';
+@use '@/assets/styles/variables' as *;
 
 .main {
   padding: 0 32px;

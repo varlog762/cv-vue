@@ -65,7 +65,7 @@ const changeLocale = () => {
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/styles/main.scss';
+@use '@/assets/styles/variables' as *;
 
 .header {
   min-height: 400px;

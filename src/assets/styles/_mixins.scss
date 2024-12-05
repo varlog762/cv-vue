@@ -1,0 +1,5 @@
+@mixin some-media {
+  @media (max-width: 1024px) {
+    color: red;
+  }
+}
