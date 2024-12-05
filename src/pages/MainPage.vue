@@ -55,6 +55,7 @@ const profileData = useProfileData()
 
 <style lang="scss" scoped>
 @use '@/assets/styles/variables' as *;
+@use '@/assets/styles/mixins' as *;
 
 .main {
   padding: 0 32px;
@@ -68,13 +69,14 @@ const profileData = useProfileData()
     'skills skills skills skills';
   background-color: $light-grey;
   padding-top: 20px;
-}
 
-.flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  gap: 80px;
+  @include media-for-small-laptop {
+    column-gap: 60px;
+  }
+
+  @include media-for-tablet {
+    column-gap: 40px;
+  }
 }
 
 .experience {

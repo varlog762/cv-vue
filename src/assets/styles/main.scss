@@ -46,11 +46,19 @@ h3 {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 40px;
+
+  @include media-for-small-laptop {
+    padding: 0;
+  }
 }
 
 .section-title {
   margin-bottom: 12px;
   font-size: 22px;
+
+  @include media-for-tablet {
+    font-size: 20px;
+  }
 }
 
 .item-title {
@@ -58,6 +66,11 @@ h3 {
   font-size: 20px;
   line-height: 22px;
   margin-bottom: 8px;
+
+  @include media-for-tablet {
+    font-size: 18px;
+    line-height: 20px;
+  }
 }
 
 .item-subtitle {
@@ -66,6 +79,11 @@ h3 {
   font-size: 16px;
   line-height: 18px;
   color: $grey;
+
+  @include media-for-tablet {
+    font-size: 15px;
+    line-height: 17px;
+  }
 }
 
 .text {
@@ -75,4 +93,9 @@ h3 {
   line-height: 17px;
   color: $dark;
   text-align: justify;
+
+  @include media-for-tablet {
+    font-size: 14px;
+    line-height: 15px;
+  }
 }

@@ -1,5 +1,29 @@
-@mixin some-media {
-  @media (max-width: 1024px) {
-    color: red;
+@mixin media-for-mobile {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin media-for-tablet {
+  @media (max-width: 790px) {
+    @content;
+  }
+}
+
+@mixin media-for-small-laptop {
+  @media (max-width: 1110px) {
+    @content;
+  }
+}
+
+@mixin media-for-large-laptop {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin media-for-desktop {
+  @media (min-width: 1440px) {
+    @content;
   }
 }

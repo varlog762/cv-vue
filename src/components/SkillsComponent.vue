@@ -31,6 +31,7 @@ const isLanguageSkill = (skill: string): boolean => {
 
 <style lang="scss" scoped>
 @use '@/assets/styles/variables' as *;
+@use '@/assets/styles/mixins' as *;
 
 .skills-grid {
   display: grid;
@@ -38,6 +39,14 @@ const isLanguageSkill = (skill: string): boolean => {
   grid-row-gap: 8px;
   grid-template: repeat(3, 1fr) / repeat(5, 1fr);
   grid-auto-flow: column;
+
+  @include media-for-small-laptop {
+    grid-template: repeat(3, 1fr) / repeat(4, 1fr) 1.5fr;
+  }
+
+  @include media-for-tablet {
+    grid-template: repeat(4, 1fr) / repeat(3, 1fr) 1.5fr;
+  }
 }
 
 .skill {
