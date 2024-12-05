@@ -19,12 +19,12 @@ const profileData = useProfileData()
   <div class="container">
     <HeaderComponent :position="profileData.position" :personal-info="profileData.personalInfo" />
     <main class="main">
-      <section class="experience section">
+      <section class="experience section" id="experience">
         <h2 class="section-title">{{ t('titles.workExperience') }}</h2>
         <JobComponent v-for="job in profileData.workExperience" :key="job.period" :job="job" />
       </section>
       <div class="education-and-about-me">
-        <section class="education section">
+        <section class="education section" id="education">
           <h2 class="section-title">{{ t('titles.education') }}</h2>
           <EducationComponent
             v-for="education in profileData.education"
@@ -32,12 +32,12 @@ const profileData = useProfileData()
             :education="education"
           />
         </section>
-        <section class="about-me section">
+        <section class="about-me section" id="about-me">
           <h2 class="section-title">{{ t('titles.aboutMe') }}</h2>
           <div class="text">{{ profileData.aboutMe }}</div>
         </section>
       </div>
-      <section class="projects section">
+      <section class="projects section" id="projects">
         <h2 class="section-title">{{ t('titles.projects') }}</h2>
         <div class="projects-grid">
           <div class="text project" v-for="project in profileData.projects" :key="project.title">
@@ -46,7 +46,7 @@ const profileData = useProfileData()
           </div>
         </div>
       </section>
-      <section class="skills section">
+      <section class="skills section" id="skills">
         <SkillsComponent :skills="profileData.skills" />
       </section>
     </main>
