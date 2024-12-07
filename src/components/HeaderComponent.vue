@@ -69,7 +69,7 @@ const changeLocale = () => {
 @use '@/assets/styles/mixins' as *;
 
 .header {
-  min-height: 400px;
+  max-height: 400px;
   padding-top: 72px;
   background: url(../images/background.png) center top no-repeat;
   background-size: 100% 100%;

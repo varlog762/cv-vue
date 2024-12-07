@@ -16,7 +16,7 @@ const profileData = useProfileData()
 </script>
 
 <template>
-  <div class="container">
+  <div class="container main-container">
     <HeaderComponent :position="profileData.position" :personal-info="profileData.personalInfo" />
     <main class="main">
       <section class="experience section" id="experience">
@@ -56,6 +56,12 @@ const profileData = useProfileData()
 <style lang="scss" scoped>
 @use '@/assets/styles/variables' as *;
 @use '@/assets/styles/mixins' as *;
+
+.main-container {
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
 .main {
   padding: 0 32px;
